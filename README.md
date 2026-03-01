@@ -18,4 +18,4 @@ A simple clock application done as a part of SNHU CS210 course
         ./build/Debug/ChadaTechClock.exe # To Run the playground
     ```
     OR
-    Run it in Visual Studio or your IDE of choice.
+    Run it in Visual Studio or your IDE of choice `(build/ChadaTechClock.slnx)`.

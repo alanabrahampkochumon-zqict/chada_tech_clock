@@ -10,7 +10,7 @@
  */
 class Clock
 {
-	// Constants for defining the limit for hour, minute, and second.
+	// Constants for defining the limit for hour, minute, and seconds
 	constexpr unsigned int HOUR_MAX = 24;
 	constexpr unsigned int MINUTE_MAX = 60;
 	constexpr unsigned int SECOND_MAX = 60;

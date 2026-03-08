@@ -21,8 +21,6 @@ class Clock
 {
 
     public:
-    // Constants for defining the limit for hour, minute, and seconds
-
 
     /*
      * Default constructor for Clock class.
@@ -54,7 +52,6 @@ class Clock
 
     /**
      * Prints the clock to the screen.
-     * @param printMode the designated mode to print the clock. Can be 12-hour, 24-hour or both the formats.
      */
     void printClock() const;
 

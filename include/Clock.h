@@ -8,21 +8,26 @@
  * A simple clock class that stores hour, minutes, and seconds.
  * It has methods for manipulating time, and printing it in 24-hour and 12-hour format.
  */
+
+constexpr unsigned char LINE_WIDTH = 32; // Maximum print line width
+constexpr unsigned int PADDING = 8; // Padding between clock prints
+
+// Constants for clock validation
+constexpr unsigned char HOUR_MAX = 24;
+constexpr unsigned char MINUTE_MAX = 60;
+constexpr unsigned char SECOND_MAX = 60;
+
 class Clock
 {
 
     public:
-
-    enum class PrintMode : unsigned char
-    {
-        TWELVE_HOUR, TWENTY_FOUR_HOUR, BOTH
-    };
-
     // Constants for defining the limit for hour, minute, and seconds
-    constexpr unsigned int HOUR_MAX = 24;
-    constexpr unsigned int MINUTE_MAX = 60;
-    constexpr unsigned int SECOND_MAX = 60;
-    constexpr unsigned int PRINT_WIDTH = 32;
+
+
+    /*
+     * Default constructor for Clock class.
+     */
+    Clock();
 
     /**
      * Parameterized constructor for initializing the Clock.
@@ -51,7 +56,13 @@ class Clock
      * Prints the clock to the screen.
      * @param printMode the designated mode to print the clock. Can be 12-hour, 24-hour or both the formats.
      */
-    void printClock(PrintMode printMode = PrintMode::BOTH) const;
+    void printClock() const;
+
+    /**
+     * Creates a clock from user input.
+     * Handles input validation and exceptions.
+     */
+    void getClockInput();
 
     private:
     unsigned int clockHour, clockMinute, clockSecond; // Member variables storing hour, minute and seconds.

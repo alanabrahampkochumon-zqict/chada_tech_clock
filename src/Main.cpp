@@ -2,6 +2,7 @@
  * Author: Alan Abraham Puthenparambil Kochumon
  * Date: 15-03-2026
  */
+
 #include <iostream>
 
 #include "Clock.h"
@@ -9,6 +10,10 @@
 #include <iomanip>
 #include <limits>
 
+
+/**
+ * Prints the menu to the console.
+ */
 static void printMenu()
 {
     std::cout << std::setw(LINE_WIDTH) << std::setfill('*') << "" << '\n';
@@ -20,8 +25,14 @@ static void printMenu()
     std::cout << std::endl;
 }
 
-static void processOptions(bool& running, Clock& clock)
+
+/**
+ * Prints the menu to the screen, takes in user input and executes the appropriate action
+ * @param clock the main clock object that is manipulated by the program.
+ */
+static void processOptions(Clock& clock)
 {
+    bool running = true; // A boolean switch runs the for loop
     while (running)
     {
         printMenu();
@@ -72,12 +83,16 @@ static void processOptions(bool& running, Clock& clock)
     }
 }
 
+/*
+ * Program's main entry point
+ */
 int main()
 {
-
+    // Creates a clock object and gets user input.
     Clock clock;
     clock.getClockInput();
-    bool running = true;
-    processOptions(running, clock);
+
+    // Start getting user input and manipulating the clock.
+    processOptions(clock);
     return 0;
 }

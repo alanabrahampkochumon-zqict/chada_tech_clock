@@ -31,8 +31,8 @@ void Clock::addSecond()
 static void printCentered(const std::string& str, const int lineWidth)
 {
     int totalInside = lineWidth - 2;
-    int leftPadding = (totalInside - str.length()) / 2;
-    int rightPadding = totalInside - str.length() - leftPadding;
+    int leftPadding = static_cast<int>(totalInside - str.length()) / 2;
+    int rightPadding = static_cast<int>(totalInside - str.length() - leftPadding);
 
     std::cout << "*" << std::setfill(' ') << std::setw(leftPadding) << "" << str << std::setw(rightPadding) << ""
               << "*";
@@ -48,6 +48,18 @@ static void printClockBorder()
     std::cout << std::setfill('*') << std::setw(LINE_WIDTH) << "" << '\n';
 }
 
+/*
+ * Helper function takes in a number and pad it with zero to 2 places, i.e 5 => 05, 12 => 12
+ * @param number the number to be formatted
+ * @returns string that contains the number with padded 0
+ */
+static std::string padWithZero(unsigned int number)
+{
+    std::stringstream ss;
+    ss << std::setw(2) << std::setfill('0') << number;
+    return ss.str();
+}
+
 
 void Clock::printClock() const
 {
@@ -55,14 +67,17 @@ void Clock::printClock() const
     std::stringstream ss;
 
     std::string amPM = (clockHour >= 12) ? "PM" : "AM";
-    unsigned int hourFactored = clockHour % 12;
-    ss << std::setw(2) << std::setfill('0') << hourFactored << ":" << std::setw(2) << std::setfill('0') << clockMinute // Adds clock string with padded 0s
-       << ":" << std::setw(2) << std::setfill('0') << clockSecond << " " << amPM;
+    unsigned int hourFactored = clockHour % 12; // Winds back clock to 12 hours
+    hourFactored = hourFactored == 0 ? 12 : hourFactored;  // Format to show 12 instead of 0, when the clock is at 0
+
+    // Takes the 12-Hour clock values and formats it
+    ss << padWithZero(hourFactored) << ":" << padWithZero(clockMinute) << ":" << padWithZero(clockSecond) << " " << amPM;
     std::string twelveHourClock = ss.str();
 
     ss.str(""); // Clears the string stream
-    ss << std::setw(2) << std::setfill('0') << clockHour << ":" << std::setw(2) << std::setfill('0') << clockMinute
-       << ":" << std::setw(2) << std::setfill('0') << clockSecond;
+
+    // Takes the 24-Hour clock values and formats it
+    ss << padWithZero(clockHour) << ":" << padWithZero(clockMinute) << ":" << padWithZero(clockSecond);
     std::string twentyFourHourClock = ss.str();
 
     // Prints top border

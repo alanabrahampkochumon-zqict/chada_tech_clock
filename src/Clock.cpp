@@ -1,6 +1,6 @@
 /**
  * Clock.cpp
- * @author Alan Abraham P Kochumon
+ * @author Alan Abraham Puthenparambil Kochumon
  * @date Created on: March 15, 2026
  *
  * @brief Clock implementation.
@@ -36,7 +36,7 @@ void Clock::addSecond()
 {
     if (clockSecond + 1 >= SECOND_MAX)
         addMinute();
-    clockSecond++;
+    clockSecond = (clockSecond + 1) % SECOND_MAX;
 }
 
 static void printCentered(const std::string& str, const int lineWidth)
@@ -139,8 +139,10 @@ void Clock::getClockInput()
 
             // Input validation
             if (inputs[counter] > validLimit[counter])
-                throw std::runtime_error(errorMessage);
+                throw std::invalid_argument(errorMessage);
 
+            inputs[counter] = inputs[counter] % validLimit[counter]; // To ensure that hour wraps around when they hit that limit. Like 60 wrapping around to 0.
+            
             ++counter;
         }
         catch (const std::ios_base::failure& _)
@@ -151,7 +153,7 @@ void Clock::getClockInput()
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(),
                             '\n'); // Clears any errorneous input till newline
         }
-        catch (const std::runtime_error& e)
+        catch (const std::invalid_argument& e)
         {
             std::cout << e.what() << "\n";
         }

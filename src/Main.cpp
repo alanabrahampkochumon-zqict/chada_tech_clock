@@ -27,7 +27,7 @@ static void printMenu()
     std::cout << std::setw(LINE_WIDTH - 1) << std::setfill(' ') << std::left << "* 2 - Add One Minute" << "*" << '\n';
     std::cout << std::setw(LINE_WIDTH - 1) << std::setfill(' ') << std::left << "* 3 - Add One Second" << "*" << '\n';
     std::cout << std::setw(LINE_WIDTH - 1) << std::setfill(' ') << std::left << "* 4 - Exit Program" << "*";
-    std::cout << std::setw(LINE_WIDTH) << std::setfill('*') << '\n';
+    std::cout << std::setw(LINE_WIDTH + 1) << std::setfill('*') << '\n';
     std::cout << std::endl;
 }
 

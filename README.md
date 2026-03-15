@@ -1,6 +1,10 @@
 # Chada Tech Clock
 
-A simple clock application done as a part of SNHU CS210 course
+A simple clock application that display an input time in both 12-hour and 24-hour format.
+
+This project does not use the system clock.
+
+<img src="assets/screenshot.png" alt="Description" height="400">
 
 ## How to run
 

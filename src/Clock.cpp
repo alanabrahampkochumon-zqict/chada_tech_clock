@@ -1,11 +1,22 @@
+/**
+ * Clock.cpp
+ * @author Alan Abraham P Kochumon
+ * @date Created on: March 15, 2026
+ *
+ * @brief Clock implementation.
+ * @details This file contains the implementation of member functions defined in @ref Clock.h.
+ * 
+ */
+
+
 #include "../include/Clock.h"
 
 #include <iomanip>
 #include <sstream>
 #include <string>
 
-Clock::Clock(): clockHour(0), clockMinute(0), clockSecond(0) {}
 
+Clock::Clock(): clockHour(0), clockMinute(0), clockSecond(0) {}
 
 Clock::Clock(unsigned int hour, unsigned int minute, unsigned second)
     : clockHour(hour), clockMinute(minute), clockSecond(second)
@@ -38,8 +49,10 @@ static void printCentered(const std::string& str, const int lineWidth)
               << "*";
 }
 
+
 /*
- * Helper function for printing the border
+ * @brief Outputs linear border to the screen.
+ *
  */
 static void printClockBorder()
 {
@@ -48,10 +61,13 @@ static void printClockBorder()
     std::cout << std::setfill('*') << std::setw(LINE_WIDTH) << "" << '\n';
 }
 
+
 /*
- * Helper function takes in a number and pad it with zero to 2 places, i.e 5 => 05, 12 => 12
- * @param number the number to be formatted
- * @returns string that contains the number with padded 0
+ * @brief Format a number to 2 places, i.e 5 => 05, 12 => 12.
+ *        Adds additional 0 if the number is a single digit.
+ *
+ * @param number The number to be formatted.
+ * @returns String containing number formatted to 2 places.
  */
 static std::string padWithZero(unsigned int number)
 {
@@ -140,6 +156,7 @@ void Clock::getClockInput()
             std::cout << e.what() << "\n";
         }
     }
+
     clockHour = inputs[0];
     clockMinute = inputs[1];
     clockSecond = inputs[2];

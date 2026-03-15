@@ -1,7 +1,13 @@
 /**
- * Author: Alan Abraham Puthenparambil Kochumon
- * Date: 15-03-2026
+ * @author Alan Abraham Puthenparambil Kochumon
+ * @date Created on: March 15, 2026
+ *
+ * @brief Encapsulates the main entry point and functions for running the program.
+ * 
+ * @copyright Copyright (c) 2026 Alan Abraham P Kochumon
  */
+
+
 
 #include <iostream>
 
@@ -12,7 +18,7 @@
 
 
 /**
- * Prints the menu to the console.
+ * @brief Output the menu to the screen.
  */
 static void printMenu()
 {
@@ -27,7 +33,8 @@ static void printMenu()
 
 
 /**
- * Prints the menu to the screen, takes in user input and executes the appropriate action
+ * @brief Displays menu options, parse input and executes the appropriate action.
+ *
  * @param clock the main clock object that is manipulated by the program.
  */
 static void processOptions(Clock& clock)
@@ -84,7 +91,7 @@ static void processOptions(Clock& clock)
 }
 
 /*
- * Program's main entry point
+ * @brief Main entry point
  */
 int main()
 {

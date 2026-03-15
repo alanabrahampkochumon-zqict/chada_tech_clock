@@ -1,16 +1,19 @@
 #pragma once
-#include <iostream>
-
 /**
- * Author: Alan Abraham Puthenparambil Kochumon
- * Date: 15-03-2026
+ * @author Alan Abraham Puthenparambil Kochumon
+ * @date Created on: March 15, 2026
  *
- * A simple clock class that stores hour, minutes, and seconds.
- * It has methods for manipulating time, and printing it in 24-hour and 12-hour format.
+ * @brief A simple clock class that stores hour, minutes, and seconds.
+ *        This class encloses methods for manipulating time, and printing it in 24-hour and 12-hour format.
+ *
  */
 
+
+#include <iostream>
+
+
 constexpr unsigned char LINE_WIDTH = 32; // Maximum print line width
-constexpr unsigned int PADDING = 8; // Padding between clock prints
+constexpr unsigned int PADDING = 8;      // Padding between clock prints
 
 // Constants for clock validation
 constexpr unsigned char HOUR_MAX = 24;
@@ -19,48 +22,56 @@ constexpr unsigned char SECOND_MAX = 60;
 
 class Clock
 {
-
-    public:
+public:
 
     /*
-     * Default constructor for Clock class.
+     * @brief Initializes a @ref Clock with all member variables set to 0.
      */
     Clock();
 
+
     /**
-     * Parameterized constructor for initializing the Clock.
+     * @brief Initializes a @ref Clock with passed in values.
+     *
      * @param hour number of hours to initialize with.
      * @param minute number of minutes to initialize with.
      * @param second number of seconds to initialize with.
      */
     Clock(unsigned int hour, unsigned int minute, unsigned second);
 
+
     /**
-     * Adds one hour to the existing hour, if >= 24 loops back.
+     * @brief Adds one hour to the existing hour.
+     *        Loops back on value >= @ref HOUR_MAX.
      */
     void addHour();
 
+
     /**
-     * Adds one minute to the existing minute, if >= 60 adds 1 hour and loops back.
+     * @brief Adds one minute to the existing minute.
+     *        Loops back on value >= @ref MINUTE_MAX.
      */
     void addMinute();
 
     /**
-     * Adds one second to the existing seconds, if >= 60 adds 1 second and loops back.
+     * @brief Adds one second to the existing minute.
+     *        Loops back on value >= @ref MINUTE_MAX.
      */
     void addSecond();
 
     /**
-     * Prints the clock to the screen.
+     * @brief Outputs the clock to the screen.
+     *        Prints the formatted time in both 24-hour and 12-hour format.
      */
     void printClock() const;
 
     /**
-     * Creates a clock from user input.
-     * Handles input validation and exceptions.
+     * @brief Create a clock from user input.
+     * @note Input validation and exceptions are handled internally.
      */
     void getClockInput();
 
-    private:
+
+private:
     unsigned int clockHour, clockMinute, clockSecond; // Member variables storing hour, minute and seconds.
 };
